@@ -49,7 +49,7 @@ const userSchema = new Schema({
 userSchema.pre("save" , async function(next){
     if(!this.isModified("password")) return next();
 
-    this.password=bcrypt.hash(this.password , 10)
+    this.password=await bcrypt.hash(this.password , 10)
     next()
 } )   //yaha per arrow function use nahi kiya kyu ki usme this ka reference nahi hota 
 
